@@ -11,7 +11,10 @@ namespace GoYes.Client.Api.Hubs;
 /// </summary>
 public class GoYesChat : IScopedTag
 {
-    public HubConnection _hubConnection;
+    /// <summary>
+    /// 程序
+    /// </summary>
+    public static HubConnection _hubConnection;
     private readonly ILocalStorageService _localStorageService;
     private readonly IConfiguration _configuration;
 

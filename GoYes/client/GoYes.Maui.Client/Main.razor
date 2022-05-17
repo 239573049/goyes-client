@@ -1,0 +1,26 @@
+﻿@using System.Reflection
+@using GoYes.Client.Pages
+@using GoYes.Client.Pages.Shared
+<Router AppAssembly="@typeof(Main).Assembly" AdditionalAssemblies="_assemblies">
+    <Found Context="routeData">
+        <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
+        <FocusOnNavigate RouteData="@routeData" Selector="h1" />
+    </Found>
+    <NotFound>
+        <LayoutView Layout="@typeof(MainLayout)">
+            <p role="alert">Sorry, there's nothing at this address.</p>
+        </LayoutView>
+    </NotFound>
+</Router>
+
+@code
+{
+    //添加需要扫描路由的程序集
+    private Assembly[] _assemblies;
+
+    public override Task SetParametersAsync(ParameterView parameters)
+    {
+        _assemblies = new Assembly[] { typeof(GoYesClientPagesModule).Assembly };
+        return base.SetParametersAsync(parameters);
+    }
+}
