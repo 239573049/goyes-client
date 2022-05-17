@@ -1,0 +1,50 @@
+﻿@using Microsoft.Extensions.Configuration
+@using Token.HttpClientHelper
+@using GoYes.Client.Module.Http
+@inherits LayoutComponentBase
+@inject IPopupService popupService
+@inject NavigationManager navigation
+@inject TokenHttp http;
+@inject IConfiguration configuration
+@inject ILocalStorageService localStorage
+<MApp>
+    @Body
+</MApp>
+
+@code {
+    protected override void OnInitialized()
+    {
+        if (http.HttpClient.BaseAddress == null)
+        {
+            http.HttpClient.BaseAddress = new Uri(configuration["baseAddress"]);
+        }
+        TokenHttp._requestMessage += RequestMessage;
+        TokenHttp._responseMessage += ResponseMessage;
+    }
+
+    public async void RequestMessage(HttpRequestMessage message)
+    {
+        var token = await localStorage.GetItemAsStringAsync("Authorization");
+        if (token != null)
+        {
+            message.Headers.Remove("Authorization");
+            message.Headers.Add("Authorization", token);
+        }
+    }
+
+    public async void ResponseMessage(HttpResponseMessage message)
+    {
+
+        if (message.StatusCode == System.Net.HttpStatusCode.BadRequest)
+        {
+            var json = await message.Content.ReadAsAsync<ResultDto>();
+            await popupService?.AlertAsync(json.Message)!;
+        }
+        else if (message.StatusCode == System.Net.HttpStatusCode.Unauthorized)
+        {
+            var json = await message.Content.ReadAsAsync<ResultDto>();
+            await popupService?.AlertAsync(json.Message)!;
+            navigation.NavigateTo("/");
+        }
+    }
+}

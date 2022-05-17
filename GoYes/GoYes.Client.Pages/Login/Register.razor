@@ -1,0 +1,93 @@
+﻿@page "/register"
+@using System.ComponentModel.DataAnnotations
+@using GoYes.Client.Api.UserInfos
+@using GoYes.Client.Module.Login
+@inject UserInfoApi userInfoApi
+@inject NavigationManager navigation
+
+
+
+<div class="register">
+    <div class="headword">
+        <div class="title">
+            <div class="welcome">欢迎光临</div><br />
+            <div class="welcome-text">欢迎来到token聊天室，这里有很多有趣的灵魂！</div>
+        </div>
+    </div>
+    <div class="right">
+        <div class="right-welcome">
+            <div class="welcome-back">欢迎回来</div>
+            <div>第三方注册</div>
+            <div class="icon">
+                <MAvatar>
+                    <MImage Src="./img/gitee.png" Alt="Jack"></MImage>
+                </MAvatar>
+            </div>
+        </div>
+        <div class="inputs">
+            <MForm @bind-Value="_valid" Model="registerDto" EnableValidation @ref="_form">
+
+                <MTextField @bind-Value="registerDto.Name"
+                            Label="昵称："
+                            required>
+                </MTextField>
+
+                <MTextField @bind-Value="registerDto.AccountNumber"
+                            Label="账号："
+                            required>
+                </MTextField>
+
+                <MTextField @bind-Value="registerDto.Password"
+                            Label="密码："
+                            AppendIcon="@(_showPassword ? "mdi-eye" : "mdi-eye-off")"
+                            Type="@(_showPassword ? "text" : "password")"
+                            Counter="true"
+                            OnAppendClick="() => _showPassword = !_showPassword"
+                            required></MTextField>
+
+                <MButton Color="error" Class="mr-4" OnClick="ResetAsync">重置</MButton>
+
+                <MButton Color="success" Class="mr-4" OnClick="Login">返回登录界面</MButton>
+
+                <MButton Color="success" Class="mr-4" OnClick="ValidateAsync">注册账号并登录</MButton>
+            </MForm>
+        </div>
+
+    </div>
+</div>
+
+
+
+@code {
+
+    private RegisterDto registerDto = new();
+
+    private bool _showPassword = false;
+
+    private bool _valid = false;
+
+    private MForm _form;
+
+    public async Task ResetAsync()
+    {
+        await _form.ResetAsync();
+    }
+
+    public void Login()
+    {
+        navigation.NavigateTo("/");
+    }
+
+    public async Task ValidateAsync()
+    {
+        if (!await _form.ValidateAsync())
+            return;
+
+        var result = await userInfoApi.Repetition(registerDto);
+        if (result)
+        {
+            navigation.NavigateTo("/admin");
+        }
+
+    }
+}

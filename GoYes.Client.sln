@@ -1,0 +1,63 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32427.441
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoYes.Blazor.App", "GoYes\GoYes.Blazor.App\GoYes.Blazor.App.csproj", "{5A22BED4-D389-48B5-9541-13A548D46245}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoYes.Client.Module", "GoYes\GoYes.Client.Module\GoYes.Client.Module.csproj", "{E2A41463-12FE-4CE0-B296-322BDF659955}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoYes.Client.Pages", "GoYes\GoYes.Client.Pages\GoYes.Client.Pages.csproj", "{5527E5AF-FCCF-498C-808E-8B5E5553CAB6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoYes.Client.Api", "GoYes\GoYes.Client.Api\GoYes.Client.Api.csproj", "{02391E8D-3524-4A68-84FB-D187A6C61B15}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{57ED2BEB-9B24-4CF1-BF4D-375A329E02F1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "client", "client", "{C03AE3DE-1EF2-4A93-8417-168D4EE7FE3B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoYes.Maui.App", "GoYes\GoYes.Maui.App\GoYes.Maui.App.csproj", "{7C339198-FA0A-446E-8E5C-A6DC7841643A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5A22BED4-D389-48B5-9541-13A548D46245}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A22BED4-D389-48B5-9541-13A548D46245}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A22BED4-D389-48B5-9541-13A548D46245}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A22BED4-D389-48B5-9541-13A548D46245}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E2A41463-12FE-4CE0-B296-322BDF659955}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2A41463-12FE-4CE0-B296-322BDF659955}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2A41463-12FE-4CE0-B296-322BDF659955}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2A41463-12FE-4CE0-B296-322BDF659955}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5527E5AF-FCCF-498C-808E-8B5E5553CAB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5527E5AF-FCCF-498C-808E-8B5E5553CAB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5527E5AF-FCCF-498C-808E-8B5E5553CAB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5527E5AF-FCCF-498C-808E-8B5E5553CAB6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02391E8D-3524-4A68-84FB-D187A6C61B15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02391E8D-3524-4A68-84FB-D187A6C61B15}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02391E8D-3524-4A68-84FB-D187A6C61B15}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02391E8D-3524-4A68-84FB-D187A6C61B15}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C339198-FA0A-446E-8E5C-A6DC7841643A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C339198-FA0A-446E-8E5C-A6DC7841643A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C339198-FA0A-446E-8E5C-A6DC7841643A}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{7C339198-FA0A-446E-8E5C-A6DC7841643A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C339198-FA0A-446E-8E5C-A6DC7841643A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C339198-FA0A-446E-8E5C-A6DC7841643A}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5A22BED4-D389-48B5-9541-13A548D46245} = {C03AE3DE-1EF2-4A93-8417-168D4EE7FE3B}
+		{E2A41463-12FE-4CE0-B296-322BDF659955} = {57ED2BEB-9B24-4CF1-BF4D-375A329E02F1}
+		{5527E5AF-FCCF-498C-808E-8B5E5553CAB6} = {57ED2BEB-9B24-4CF1-BF4D-375A329E02F1}
+		{02391E8D-3524-4A68-84FB-D187A6C61B15} = {57ED2BEB-9B24-4CF1-BF4D-375A329E02F1}
+		{C03AE3DE-1EF2-4A93-8417-168D4EE7FE3B} = {57ED2BEB-9B24-4CF1-BF4D-375A329E02F1}
+		{7C339198-FA0A-446E-8E5C-A6DC7841643A} = {C03AE3DE-1EF2-4A93-8417-168D4EE7FE3B}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F3F9E15F-A6B6-42D0-B35F-940CDB03FCA9}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,21 @@
+﻿@using GoYes.Client.Api.UserInfos
+@using GoYes.Client.Module
+@inject UserInfoApi userInfoApi
+@inject ILocalStorageService localStorage
+<div>
+    用户名称：@userInfo?.Name
+</div>
+
+@code {
+    private UserInfo? userInfo;
+
+    protected override async Task OnInitializedAsync()
+    {
+        userInfo = ( await localStorage.GetItemAsync<UserInfo>("user") );
+        if (userInfo == null)
+        {
+            userInfo = await userInfoApi.GetUserInfoAsync();
+            await localStorage.SetItemAsync("user", userInfo);
+        }
+    }
+}
