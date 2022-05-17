@@ -1,0 +1,33 @@
+﻿
+<MList>
+
+    <MListItem @key="Guid.NewGuid()"
+               OnClick="AddFriendAsync">
+        <MListItemTitle>添加好友</MListItemTitle>
+    </MListItem>
+
+    <MListItem @key="Guid.NewGuid()"
+               OnClick="AddGroupAsync">
+        <MListItemTitle>添加群聊</MListItemTitle>
+    </MListItem>
+
+</MList>
+@code {
+    /// <summary>
+    ///添加好友
+    /// </summary>
+    /// <returns></returns>
+    private async Task AddFriendAsync()
+    {
+        await Task.CompletedTask;
+    }
+
+    /// <summary>
+    ///添加好友
+    /// </summary>
+    /// <returns></returns>
+    private async Task AddGroupAsync()
+    {
+        await Task.CompletedTask;
+    }
+}

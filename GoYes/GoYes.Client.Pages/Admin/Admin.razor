@@ -5,6 +5,7 @@
 @using GoYes.Client.Pages.Admin.Home
 @using GoYes.Client.Pages.Admin.Mine
 @using GoYes.Client.Pages.Admin.World
+@using GoYes.Client.Pages.Component
 @using Microsoft.AspNetCore.SignalR.Client
 
 @inject GoYesChat goyeschat
@@ -29,16 +30,7 @@
                     </MButton>
                 </ActivatorContent>
                 <ChildContent>
-                    <MList>
-                        @for (var i = 0 ; i < 5 ; i++)
-                        {
-                            var n = i + 1;
-                            <MListItem @key="n"
-                                   OnClick="() => {}">
-                                <MListItemTitle>Option @n</MListItemTitle>
-                            </MListItem>
-                        }
-                    </MList>
+                    <MenuListComponent />
                 </ChildContent>
             </MMenu>
         </MAppBar>
@@ -70,16 +62,16 @@
 </div>
 
 @code {
-
-
-
     [Parameter]
 
     public string? page { get; set; }
 
     public object? data { get; set; }
 
-
+    private async Task AddFriend()
+    {
+        await Task.CompletedTask;
+    }
 
     protected override async Task OnInitializedAsync()
     {
