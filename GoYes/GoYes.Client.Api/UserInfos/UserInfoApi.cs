@@ -6,6 +6,10 @@ using Token.HttpClientHelper;
 using Token.Inject.tag;
 
 namespace GoYes.Client.Api.UserInfos;
+
+/// <summary>
+/// 
+/// </summary>
 public class UserInfoApi : IScopedTag
 {
     private readonly TokenHttp _http;
@@ -27,7 +31,7 @@ public class UserInfoApi : IScopedTag
     {
 
         var result = await _http.PostAsync<ResultDto<string>>(host + "repetition", dto);
-        if (result?.Code == 200)
+        if(result?.Code == 200)
         {
             await _localStorageService.SetItemAsStringAsync("token", result.Data);
             result.Data = "Bearer " + result.Data;
@@ -44,7 +48,7 @@ public class UserInfoApi : IScopedTag
     public async Task<UserInfo?> GetUserInfoAsync()
     {
         var result = await _http.GetAsync<ResultDto<UserInfo>>(host + "user-info");
-        if (result?.Code == 200)
+        if(result?.Code == 200)
         {
             return result.Data;
         }

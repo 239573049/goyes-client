@@ -1,4 +1,5 @@
-﻿
+﻿@using GoYes.Client.Pages.Component.Menu
+
 <MList>
 
     <MListItem @key="Guid.NewGuid()"
@@ -12,22 +13,31 @@
     </MListItem>
 
 </MList>
+
+<AddFriendsComponent OnClose="()=>IsShowAddFriends=false" show="IsShowAddFriends"></AddFriendsComponent>
+
+<AddGroupComponent OnClose="()=>IsAddGroup=false" show="IsAddGroup"></AddGroupComponent>
 @code {
+    private bool IsShowAddFriends = false;
+    private bool IsAddGroup = false;
     /// <summary>
     ///添加好友
     /// </summary>
     /// <returns></returns>
     private async Task AddFriendAsync()
     {
+        IsShowAddFriends = true;
         await Task.CompletedTask;
     }
 
     /// <summary>
-    ///添加好友
+    ///添加群聊
     /// </summary>
     /// <returns></returns>
     private async Task AddGroupAsync()
     {
+        IsAddGroup = true;
+
         await Task.CompletedTask;
     }
 }

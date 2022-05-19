@@ -28,8 +28,10 @@ public class LoginApi : IScopedTag
     /// <returns></returns>
     public async Task<string> Login(LoginDto dto)
     {
+        _http.SetContentType("application/json");
+        _http.HttpClient.DefaultRequestHeaders.Add("Access-Control-Allow-Origin", "*");
         var result = await _http!.PostAsync<ResultDto<string>>(host + "login", dto);
-        if (result?.Code == 200)
+        if(result?.Code == 200)
         {
             await _localStorageService.SetItemAsStringAsync("token", result.Data);
             result.Data = "Bearer " + result.Data;

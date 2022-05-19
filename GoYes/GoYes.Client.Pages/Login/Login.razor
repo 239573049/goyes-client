@@ -25,7 +25,7 @@
             </div>
         </div>
         <div class="inputs">
-            <MForm @bind-Value="_valid" Model="loginDto" EnableValidation @ref="_form">
+            <MForm Model="loginDto" EnableValidation @ref="_form">
                 <MTextField @bind-Value="loginDto.AccountNumber"
                             Label="账号："
                             required>
@@ -40,7 +40,7 @@
                             required></MTextField>
                 <MButton Color="error" Class="mr-4" OnClick="ResetAsync">重置</MButton>
                 <MButton Color="success" Class="mr-4" OnClick="Register">注册账号</MButton>
-                <MButton Disabled="!_valid" Color="success" Class="mr-4" OnClick="ValidateAsync">登录</MButton>
+                <MButton Color="success" Class="mr-4" OnClick="ValidateAsync">登录</MButton>
             </MForm>
         </div>
 
@@ -57,9 +57,14 @@
 
     private bool _showPassword = false;
 
-    private bool _valid = false;
-
     private MForm? _form;
+
+    public override Task SetParametersAsync(ParameterView parameters)
+    {
+        loginDto.AccountNumber = "admin";
+        loginDto.Password = "010426";
+        return base.SetParametersAsync(parameters);
+    }
 
     public async Task ResetAsync()
     {

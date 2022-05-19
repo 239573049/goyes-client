@@ -9,20 +9,20 @@ namespace GoYes.Client.Api.Hubs;
 /// <summary>
 /// 通信模块
 /// </summary>
-public class GoYesChat : IScopedTag
+public class GoYesChatApi : IScopedTag
 {
     /// <summary>
     /// 程序
     /// </summary>
-    public static HubConnection _hubConnection;
+    public HubConnection _hubConnection;
     private readonly ILocalStorageService _localStorageService;
     private readonly IConfiguration _configuration;
 
     ///<inheritdoc/>
-    public GoYesChat(ILocalStorageService localStorageService, IConfiguration configuration)
+    public GoYesChatApi(ILocalStorageService localStorageService, IConfiguration configuration)
     {
         _localStorageService = localStorageService;
-        this._configuration = configuration;
+        _configuration = configuration;
     }
 
     /// <summary>
@@ -31,7 +31,7 @@ public class GoYesChat : IScopedTag
     /// <returns></returns>
     public async Task StartAsync()
     {
-        if (_hubConnection?.State == HubConnectionState.Connected)
+        if(_hubConnection?.State == HubConnectionState.Connected)
             return;
         //获取接口地址
         var baseAddress = _configuration["baseAddress"];
@@ -52,6 +52,10 @@ public class GoYesChat : IScopedTag
         await _hubConnection.StartAsync();
     }
 
+    /// <summary>
+    /// 停止推送
+    /// </summary>
+    /// <returns></returns>
     public async Task StopAsync()
     {
         await _hubConnection.StopAsync();

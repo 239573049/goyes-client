@@ -1,0 +1,96 @@
+﻿@using BlazorComponent
+@using GoYes.Client.Api.Group
+@using GoYes.Client.Api.Hubs
+@using GoYes.Client.Module.GroupChat
+@using Microsoft.AspNetCore.Components.Forms
+@using Microsoft.AspNetCore.Components.Web
+@inject GroupChatApi groupChatApi
+<MDialog @bind-Value="show"
+         Transition="dialog-bottom-transition"
+         MaxWidth="600">
+    <ChildContent>
+        <MCard>
+            <MToolbar Color="primary"
+                      Dark>
+
+            </MToolbar>
+            <MCardText>
+                <MForm Model="_form" EnableValidation>
+                    <MContainer>
+                        <MRow>
+                            <MTextField @bind-Value="_form.Name"
+                                        Counter="6"
+                                        Label="群聊名称："
+                                        required></MTextField>
+                        </MRow>
+
+                        <MRow>
+                            <MFileInput TValue="IBrowserFile"
+                                        Rules="_rules"
+                                        Accept="image/png, image/jpeg, image/bmp"
+                                        PrependIcon="mdi-camera"
+                                        OnChange="UploadingFile"
+                                        Label="Avatar"></MFileInput>
+                        </MRow>
+                    </MContainer>
+                </MForm>
+
+            </MCardText>
+            <MCardActions Class="justify-end">
+                <MButton Text
+                         OnClick="AddGroupAsync">
+                    创建
+                </MButton>
+                <MButton Text
+                         OnClick="() => show = false">
+                    关闭
+                </MButton>
+            </MCardActions>
+        </MCard>
+    </ChildContent>
+</MDialog>
+
+@code {
+    [Parameter]
+    public bool show { get; set; } = false;
+
+    [Parameter]
+    public EventCallback<MouseEventArgs> OnClose { get; set; }
+
+    private GroupChatDto _form = new();
+
+    private List<Func<IBrowserFile, StringBoolean>> _rules = new List<Func<IBrowserFile, StringBoolean>>()
+        {
+            value=>(value==null||value.Size<2000000)?true:"头像大小应小于2MB"
+        };
+
+    private void UploadingFile(IBrowserFile file)
+    {
+
+    }
+
+    /// <summary>
+    /// 搜索的账号
+    /// </summary>
+    private string? Name { get; set; }
+
+    /// <summary>
+    /// 添加好友事件
+    /// </summary>
+    /// <returns></returns>
+    private async Task AddGroupAsync()
+    {
+        show = true;
+        if(string.IsNullOrWhiteSpace(Name))
+        {
+            return;
+        }
+
+        var group = await groupChatApi.PostGroupChat(new GroupChatDto
+            {
+                Name = Name,
+                HeadPortrait = "",
+            });
+
+    }
+}

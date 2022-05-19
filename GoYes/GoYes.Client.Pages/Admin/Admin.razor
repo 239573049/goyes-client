@@ -8,7 +8,7 @@
 @using GoYes.Client.Pages.Component
 @using Microsoft.AspNetCore.SignalR.Client
 
-@inject GoYesChat goyeschat
+@inject GoYesChatApi goyeschat
 
 <div style="height:100%">
     <div class="main">
@@ -34,15 +34,15 @@
                 </ChildContent>
             </MMenu>
         </MAppBar>
-        @if (page == "mine")
+        @if(page == "mine")
         {
             <Mine />
         }
-        else if (page == "world")
+        else if(page == "world")
         {
             <World />
         }
-        else if (page == "friend")
+        else if(page == "friend")
         {
             <Friend />
         }
