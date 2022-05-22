@@ -11,7 +11,7 @@ namespace GoYes.Client.Api.login;
 /// </summary>
 public class LoginApi : IScopedTag
 {
-    private const string host = HostApi.Tokenapi + "api/Login/";
+    private const string host = HostApi.Authorityapi + "api/Login/";
     private readonly TokenHttp _http;
     private readonly ILocalStorageService _localStorageService;
     ///<inheritdoc/>

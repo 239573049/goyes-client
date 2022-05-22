@@ -78,11 +78,11 @@
 
     public async Task ValidateAsync()
     {
-        if (!await _form!.ValidateAsync())
+        if(!await _form!.ValidateAsync())
             return;
 
         var result = await loginApi.Login(loginDto);
-        if (!string.IsNullOrEmpty(result))
+        if(!string.IsNullOrEmpty(result))
         {
             await localStorage.SetItemAsStringAsync("Authorization", result);
 

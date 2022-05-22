@@ -14,7 +14,7 @@
     <PackageReference Include="Microsoft.AspNetCore.SignalR.Protocols.MessagePack" Version="6.0.5" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="6.0.0" />
     <PackageReference Include="Microsoft.Net.Http.Headers" Version="2.2.8" />
-    <PackageReference Include="Token.HttpClientHelper" Version="1.1.0" />
+    <PackageReference Include="Token.HttpClientHelper" Version="1.1.5" />
     <PackageReference Include="Token.Inject" Version="1.0.0" />
   </ItemGroup>
 

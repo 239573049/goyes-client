@@ -14,7 +14,7 @@ public class UserInfoApi : IScopedTag
 {
     private readonly TokenHttp _http;
     private readonly ILocalStorageService _localStorageService;
-    private const string host = HostApi.Tokenapi + "api/UserInfo/";
+    private const string host = HostApi.Authorityapi + "api/UserInfo/";
     public UserInfoApi(
     TokenHttp http, ILocalStorageService localStorageService)
     {

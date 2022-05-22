@@ -19,7 +19,7 @@ public class GroupChatApi : IScopedTag
     {
         _http = http;
     }
-    private const string host = HostApi.Tokenapi + "api/GroupChat/";
+    private const string host = HostApi.Authorityapi + "api/GroupChat/";
 
     /// <summary>
     /// 创建群聊
