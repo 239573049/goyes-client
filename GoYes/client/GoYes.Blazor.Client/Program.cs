@@ -6,7 +6,7 @@ var builder = WebAssemblyHostBuilder.CreateDefault(args);
 
 builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
-builder.Services.AddClientPage(builder.Configuration);
+await builder.Services.AddClientPage(builder.Configuration);
 
 var app = builder.Build();
 

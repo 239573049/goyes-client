@@ -33,6 +33,16 @@ public class OssApi : IScopedTag
     }
 
     /// <summary>
+    /// 获取oss host路径
+    /// </summary>
+    /// <returns></returns>
+    public async Task<string?> GetHostAsync()
+    {
+        var result = await _http.GetAsync<ResultDto<string>>(host + "host");
+        return result.Data;
+    }
+
+    /// <summary>
     /// 删除文件
     /// </summary>
     /// <param name="fileName"></param>

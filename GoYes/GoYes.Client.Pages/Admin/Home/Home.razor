@@ -1,11 +1,35 @@
-﻿
+﻿@using GoYes.Client.Api.Group
+@using GoYes.Client.Module.GroupChat
+@using GoYes.Client.Module.Shared
+@inject GroupChatApi groupChatApi
+
 <div>
+    @foreach(var g in GroupList)
+    {
+        <div class="home-list">
+            <MListItem>
+                <MListItemAvatar>
+                    <MImage Src="@g.HeadPortrait"></MImage>
+                </MListItemAvatar>
+
+                <MListItemContent>
+                    <MListItemTitle>@((MarkupString) g.Name)</MListItemTitle>
+                        <MListItemSubtitle>@((MarkupString) "虚拟内容")</MListItemSubtitle>
+                    </MListItemContent>
+                </MListItem>
+            </div>
+    }
 </div>
 
 @code {
-    protected override Task OnInitializedAsync()
+
+    private List<GroupRecordListView> GroupList = new List<GroupRecordListView>();
+
+
+    protected override async Task OnInitializedAsync()
     {
-        return base.OnInitializedAsync();
+        GroupList = await groupChatApi.GetGroupRecordListAsync();
+
     }
 
 }

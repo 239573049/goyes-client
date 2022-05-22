@@ -19,7 +19,7 @@ public class GroupChatApi : IScopedTag
     {
         _http = http;
     }
-    private const string host = HostApi.Authorityapi + "api/GroupChat/";
+    private const string host = HostApi.Adminapi + "api/GroupChat/";
 
     /// <summary>
     /// 创建群聊
@@ -33,4 +33,13 @@ public class GroupChatApi : IScopedTag
         return result?.Data;
     }
 
+    /// <summary>
+    /// 获取用户群聊和好友列表
+    /// </summary>
+    /// <returns></returns>
+    public async Task<List<GroupRecordListView>> GetGroupRecordListAsync()
+    {
+        var result = await _http.GetAsync<ResultDto<List<GroupRecordListView>>>(host + "group-record-list");
+        return result.Data;
+    }
 }

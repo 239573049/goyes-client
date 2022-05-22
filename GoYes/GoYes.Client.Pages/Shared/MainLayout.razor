@@ -14,7 +14,7 @@
 @code {
     protected override void OnInitialized()
     {
-        if (http.HttpClient.BaseAddress == null)
+        if(http.HttpClient.BaseAddress == null)
         {
             http.HttpClient.BaseAddress = new Uri(configuration["baseAddress"]);
         }
@@ -25,7 +25,7 @@
     public async void RequestMessage(HttpRequestMessage message)
     {
         var token = await localStorage.GetItemAsStringAsync("Authorization");
-        if (token != null)
+        if(token != null)
         {
             message.Headers.Remove("Authorization");
             message.Headers.Add("Authorization", token);
@@ -35,12 +35,11 @@
     public async void ResponseMessage(HttpResponseMessage message)
     {
 
-        if (message.StatusCode == System.Net.HttpStatusCode.BadRequest)
+        if(message.StatusCode == System.Net.HttpStatusCode.BadRequest)
         {
-            var json = await message.Content.ReadAsAsync<ResultDto>();
-            await popupService?.AlertAsync(json.Message)!;
+            await popupService?.AlertAsync("你的请求发生了错误")!;
         }
-        else if (message.StatusCode == System.Net.HttpStatusCode.Unauthorized)
+        else if(message.StatusCode == System.Net.HttpStatusCode.Unauthorized)
         {
             var json = await message.Content.ReadAsAsync<ResultDto>();
             await popupService?.AlertAsync(json.Message)!;

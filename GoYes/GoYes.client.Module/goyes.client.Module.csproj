@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\GoYes.Client.Module.Shared\GoYes.Client.Module.Shared.csproj" />
+  </ItemGroup>
+
 </Project>

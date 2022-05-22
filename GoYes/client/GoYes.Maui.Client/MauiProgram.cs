@@ -4,7 +4,7 @@ using Microsoft.Extensions.Configuration;
 namespace GoYes.Maui.App;
 public static class MauiProgram
 {
-    public static MauiApp CreateMauiApp()
+    public static async Task<MauiApp> CreateMauiApp()
     {
         var builder = MauiApp.CreateBuilder();
         builder.Configuration
@@ -22,7 +22,7 @@ public static class MauiProgram
         builder.Services.AddBlazorWebViewDeveloperTools();
 #endif
 
-        builder.Services.AddClientPage(builder.Configuration);
+        await builder.Services.AddClientPage(builder.Configuration);
 
         return builder.Build();
     }

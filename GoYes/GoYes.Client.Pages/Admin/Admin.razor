@@ -1,6 +1,8 @@
 ﻿@page "/admin/{page?}"
 
 @using GoYes.Client.Api.Hubs
+@using GoYes.Client.Api.Oss
+@using GoYes.Client.Module.Shared
 @using GoYes.Client.Pages.Admin.Friend
 @using GoYes.Client.Pages.Admin.Home
 @using GoYes.Client.Pages.Admin.Mine
@@ -9,7 +11,7 @@
 @using Microsoft.AspNetCore.SignalR.Client
 
 @inject GoYesChatApi goyeschat
-
+@inject OssApi ossApi
 <div style="height:100%">
     <div class="main">
         <MAppBar Color="deep-purple accent-4"
@@ -73,6 +75,11 @@
         await Task.CompletedTask;
     }
 
+
+    /// <summary>
+    /// 进入界面初始化操作
+    /// </summary>
+    /// <returns></returns>
     protected override async Task OnInitializedAsync()
     {
         await goyeschat.StartAsync();

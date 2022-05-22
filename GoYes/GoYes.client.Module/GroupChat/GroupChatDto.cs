@@ -17,4 +17,15 @@ public class GroupChatDto
     /// 连接id
     /// </summary>
     public string? ConnectId { get; set; }
+
+    /// <summary>
+    /// 文件流
+    /// </summary>
+    public Stream? FileStream { get; set; }
+
+    /// <summary>
+    /// 文件名
+    /// </summary>
+    public string? FileName { get; set; }
+
 }

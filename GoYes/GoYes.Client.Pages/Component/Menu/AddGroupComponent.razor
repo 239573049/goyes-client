@@ -1,10 +1,16 @@
 ﻿@using BlazorComponent
 @using GoYes.Client.Api.Group
 @using GoYes.Client.Api.Hubs
+@using GoYes.Client.Api.Oss
 @using GoYes.Client.Module.GroupChat
+@using GoYes.Client.Pages.Utils
 @using Microsoft.AspNetCore.Components.Forms
 @using Microsoft.AspNetCore.Components.Web
+@using Token.HttpClientHelper
 @inject GroupChatApi groupChatApi
+@inject OssApi ossApi
+@inject Messages message
+
 <MDialog @bind-Value="show"
          Transition="dialog-bottom-transition"
          MaxWidth="600">
@@ -66,31 +72,33 @@
 
     private void UploadingFile(IBrowserFile file)
     {
-
+        _form.FileName = file.Name;
+        _form.FileStream = file.OpenReadStream();
     }
 
     /// <summary>
-    /// 搜索的账号
-    /// </summary>
-    private string? Name { get; set; }
-
-    /// <summary>
-    /// 添加好友事件
+    /// 新增群聊事件
     /// </summary>
     /// <returns></returns>
     private async Task AddGroupAsync()
     {
-        show = true;
-        if(string.IsNullOrWhiteSpace(Name))
+        if(string.IsNullOrWhiteSpace(_form.Name))
         {
             return;
         }
 
-        var group = await groupChatApi.PostGroupChat(new GroupChatDto
+        var path = await ossApi.Uploading(new UploadingDto
             {
-                Name = Name,
-                HeadPortrait = "",
+                FileName = _form.FileName,
+                Name = "file",
+                Stream = _form.FileStream
             });
 
+        var group = await groupChatApi.PostGroupChat(new GroupChatDto
+            {
+                Name = _form.Name,
+                HeadPortrait = path,
+            });
+        show = false;
     }
 }

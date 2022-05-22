@@ -1,0 +1,9 @@
+﻿.home-list {
+    background-color: floralwhite;
+}
+
+    .home-list:hover {
+        transition:1.1s;
+        border-radius:12px;
+        background-color: lightgreen;
+    }

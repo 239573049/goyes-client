@@ -1,24 +1,25 @@
-<Project Sdk="Microsoft.NET.Sdk.Razor">
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
 
-  <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+	</PropertyGroup>
 
 
-  <ItemGroup>
-    <SupportedPlatform Include="browser" />
-  </ItemGroup>
+	<ItemGroup>
+		<SupportedPlatform Include="browser" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Masa.Blazor" Version="0.3.11407" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.0.5" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Masa.Blazor" Version="0.3.11407" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.0.5" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\GoYes.Client.Api\GoYes.client.Api.csproj" />
-    <ProjectReference Include="..\GoYes.Client.Module\GoYes.Client.Module.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\GoYes.Client.Api\GoYes.client.Api.csproj" />
+		<ProjectReference Include="..\GoYes.Client.Module.Shared\GoYes.Client.Module.Shared.csproj" />
+		<ProjectReference Include="..\GoYes.Client.Module\GoYes.Client.Module.csproj" />
+	</ItemGroup>
 
 </Project>
