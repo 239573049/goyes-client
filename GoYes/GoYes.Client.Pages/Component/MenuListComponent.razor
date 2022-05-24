@@ -2,8 +2,7 @@
 
 <MList>
 
-    <MListItem @key="Guid.NewGuid()"
-               OnClick="AddFriendAsync">
+    <MListItem @key="Guid.NewGuid()" Href="/admin/add-friends-menu">
         <MListItemTitle>添加好友</MListItemTitle>
     </MListItem>
 
@@ -12,23 +11,17 @@
         <MListItemTitle>添加群聊</MListItemTitle>
     </MListItem>
 
-</MList>
+    <MListItem @key="Guid.NewGuid()"
+               OnClick="AddGroupAsync">
+        <MListItemTitle>好友添加记录</MListItemTitle>
+    </MListItem>
 
-<AddFriendsComponent OnClose="()=>IsShowAddFriends=false" show="IsShowAddFriends"></AddFriendsComponent>
+</MList>
 
 <AddGroupComponent OnClose="()=>IsAddGroup=false" show="IsAddGroup"></AddGroupComponent>
 @code {
-    private bool IsShowAddFriends = false;
+
     private bool IsAddGroup = false;
-    /// <summary>
-    ///添加好友
-    /// </summary>
-    /// <returns></returns>
-    private async Task AddFriendAsync()
-    {
-        IsShowAddFriends = true;
-        await Task.CompletedTask;
-    }
 
     /// <summary>
     ///添加群聊

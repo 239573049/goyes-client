@@ -18,7 +18,6 @@ public static class GoYesClientPagesModule
     /// <exception cref="NullReferenceException"></exception>
     public static async Task<IServiceCollection> AddClientPage(this IServiceCollection service, IConfiguration configuration)
     {
-
         service.AddMasaBlazor();
         service.AddBlazoredLocalStorage();
         service.AddClientApi(configuration);

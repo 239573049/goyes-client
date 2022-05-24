@@ -1,4 +1,4 @@
-﻿@page "/admin/{page?}"
+﻿@page "/admin"
 
 @using GoYes.Client.Api.Hubs
 @using GoYes.Client.Api.Oss
@@ -36,15 +36,15 @@
                 </ChildContent>
             </MMenu>
         </MAppBar>
-        @if(page == "mine")
+        @if(page == AdminPages.Mine)
         {
             <Mine />
         }
-        else if(page == "world")
+        else if(page == AdminPages.World)
         {
             <World />
         }
-        else if(page == "friend")
+        else if(page == AdminPages.Friend)
         {
             <Friend />
         }
@@ -52,28 +52,36 @@
         {
             <Home />
         }
+
+
     </div>
     <div>
         <MTabs FixedTabs BackgroundColor="indigo" Dark>
-            <MTab Href="/admin/home">首页</MTab>
-            <MTab Href="/admin/friend">好友</MTab>
-            <MTab Href="/admin/world">世界</MTab>
-            <MTab Href="/admin/mine">我的</MTab>
+            <MTab OnClick="()=>GoPage(AdminPages.Home)">首页</MTab>
+            <MTab OnClick="()=>GoPage(AdminPages.Friend)">好友</MTab>
+            <MTab OnClick="()=>GoPage(AdminPages.World)">世界</MTab>
+            <MTab OnClick="()=>GoPage(AdminPages.Mine)">我的</MTab>
         </MTabs>
     </div>
 </div>
 
 @code {
-    [Parameter]
 
-    public string? page { get; set; }
+    public AdminPages? page { get; set; }
 
-    public object? data { get; set; }
+
+
+    public void GoPage(AdminPages page)
+    {
+        this.page = page;
+    }
+
 
     private async Task AddFriend()
     {
         await Task.CompletedTask;
     }
+
 
 
     /// <summary>

@@ -17,7 +17,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "client", "client", "{C03AE3
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoYes.Maui.Client", "GoYes\client\GoYes.Maui.Client\GoYes.Maui.Client.csproj", "{7C339198-FA0A-446E-8E5C-A6DC7841643A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoYes.Client.Module.Shared", "GoYes\GoYes.Client.Module.Shared\GoYes.Client.Module.Shared.csproj", "{B094A6BD-AF19-4363-B354-F23FBF807CE0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoYes.Client.Module.Shared", "GoYes\GoYes.Client.Module.Shared\GoYes.Client.Module.Shared.csproj", "{B094A6BD-AF19-4363-B354-F23FBF807CE0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

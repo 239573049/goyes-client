@@ -1,0 +1,28 @@
+﻿@using GoYes.Client.Pages.Utils
+@inject NavigationManager navigation
+@inject JSHelper jsHelper
+<MToolbar Elevation="4">
+    <MButton Class="ma-2"
+             Color="orange darken-2"
+             OnClick="ReturnPage"
+             Dark>
+        <MIcon Dark
+               Left>
+            mdi-arrow-left
+        </MIcon>返回上一页
+    </MButton>
+</MToolbar>
+
+
+@code {
+
+    /// <summary>
+    /// 返回上一页方法
+    /// </summary>
+    /// <returns></returns>
+    private async Task ReturnPage()
+    {
+        await jsHelper.BackAsync();
+    }
+
+}
